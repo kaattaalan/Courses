@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface CourseRepo extends JpaRepository<Course,Long> {
     List<Course> findAll();
+    Course findByCname(String cname);
 }

@@ -48,7 +48,7 @@ public class MasterController {
     public String insertStudent(@RequestParam("courseID") String cname, Student student)
     {
         Course cc=crepo.findByCname(cname);
-        student.set
+        student.setCourse(cc);
         srepo.save(student);
         return "studentHome";
     }

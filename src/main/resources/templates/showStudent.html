@@ -13,6 +13,7 @@
         th:each="std : ${students}">
         <td th:text="${std.sid}">id</td>
         <td th:text="${std.sname}">sname</td>
+        <td th:text="${std.cid}">cid</td>
         <!--<td><a th:text="${std.sname}" th:href="@{|/fullCourse/${std.sid}|}">name</a>  </td>-->
     </tr>
 </table>
