@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Student</title>
 </head>
 <body>
 <form action="addStudent">
     <input type="text" name="sname"/>
+    <select th:unless="${#lists.isEmpty(courseList)}" name="courseId">
+        <option th:each="course:${courseList}" th:text="${course.cname}"></option>
+    </select>
     <input type="submit" value="Submit"/>
 </form>
 <a href="showSTD">Show Students</a>

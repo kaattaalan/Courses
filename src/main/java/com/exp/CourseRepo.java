@@ -8,5 +8,6 @@ import java.util.List;
  * Created by appu on 16/12/16.
  */
 public interface CourseRepo extends JpaRepository<Course,Long> {
-    List<Course> findAll();
+  List<Course> findById(Long courseId);
+
 }

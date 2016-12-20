@@ -6,7 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -23,7 +25,8 @@ public class MasterController {
     StudentRepo srepo;
 
     @RequestMapping("student")                              //index page management
-    public String studHome(){
+    public String studHome(Model model){
+        model.addAttribute("courseList",crepo.findAll());
         return "studentHome";
     }
     @Autowired
@@ -43,8 +46,12 @@ public class MasterController {
         }
 
     @RequestMapping(value = "addStudent")
-    public String insertStudent(Student student)
+    public String insertStudent(@RequestParam("courseId") Long courseId, Model model, Student student)
     {
+        List<Course> oneCourse=crepo.findById(courseId);
+        Iterator<Course> iter=oneCourse.iterator();
+        Course cou=iter.next();
+        student.setCourse(cou);
         srepo.save(student);
         return "studentHome";
     }
