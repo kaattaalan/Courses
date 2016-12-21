@@ -45,12 +45,14 @@ public class MasterController {
         }
 
     @RequestMapping(value = "addStudent")
-    public String insertStudent(@RequestParam("courseID") String cname, Student student)
+    public String insertStudent(@RequestParam("courseID") String cname, Student student,Model model)
     {
         Course cc=crepo.findByCname(cname);
         student.setCourse(cc);
         srepo.save(student);
-        return "studentHome";
+        List<Student> lS=srepo.findAll();
+        model.addAttribute("students",lS);
+        return "showStudent";
     }
 
 

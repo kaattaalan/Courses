@@ -8,7 +8,6 @@
     <input type="text" name="sname"/>
     <select th:unless="${#lists.isEmpty(courseList)}" name="courseID">
         <option th:each="course:${courseList}" th:text="${course.cname}"></option>
-
     </select>
     <input type="submit" value="Submit"/>
 </form>
