@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface StudentRepo  extends JpaRepository<Student,Long> {
     public List<Student> findAll();
+    public Long deleteBySid(Long sid);
 }

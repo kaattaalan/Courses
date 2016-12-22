@@ -3,7 +3,9 @@ package com.exp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -72,6 +74,13 @@ public class MasterController {
     {
         List<Student> lS=srepo.findAll();
         model.addAttribute("students",lS);
+        return "showStudent";
+    }
+    @Transactional
+    @RequestMapping(value = "DeleteStudent/{stdid}")
+    public String deleS(@PathVariable("stdid")Long studid)
+    {
+        Long ll=srepo.deleteBySid(studid);
         return "showStudent";
     }
 

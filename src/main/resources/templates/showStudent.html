@@ -13,7 +13,7 @@
         th:each="std : ${students}">
         <td th:text="${std.sid}">id</td>
         <td th:text="${std.sname}">sname</td>
-        <!--<td><a th:text="${std.sname}" th:href="@{|/fullCourse/${std.sid}|}">name</a>  </td>-->
+        <td><a  th:href="@{|/DeleteStudent/${std.sid}|}">delete</a>  </td>
     </tr>
 </table>
 <a href="student">Insert A new Student</a>
