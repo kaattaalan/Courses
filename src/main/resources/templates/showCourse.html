@@ -12,8 +12,10 @@
     <tr th:unless="${#lists.isEmpty(courses)}"
         th:each="course : ${courses}">
         <td th:text="${course.cid}">id</td>
+
        <!-- <td><a th:text="${course.cname}" th:href="@{|/fullCourse/${course.cid}|}">name</a>  </td>-->
         <td th:text="${course.cname}">name</td>
+        <td><a  th:href="@{|/DeleteCourse/${course.cid}|}">delete</a>  </td>
     </tr>
 </table>
 <a href="course">Insert A new Course</a>

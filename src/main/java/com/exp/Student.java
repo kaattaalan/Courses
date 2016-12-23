@@ -1,5 +1,7 @@
 package com.exp;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.*;
 
 /**

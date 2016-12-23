@@ -76,11 +76,16 @@ public class MasterController {
         model.addAttribute("students",lS);
         return "showStudent";
     }
-    @Transactional
     @RequestMapping(value = "DeleteStudent/{stdid}")
     public String deleS(@PathVariable("stdid")Long studid)
     {
-        Long ll=srepo.deleteBySid(studid);
+        srepo.deleteBySid(studid);
+        return "showStudent";
+    }
+    @RequestMapping(value = "DeleteCourse/{crsid}")
+    public String deleC(@PathVariable("crsid")Long coursedid)
+    {
+        crepo.deleteByCid(coursedid);
         return "showStudent";
     }
 
