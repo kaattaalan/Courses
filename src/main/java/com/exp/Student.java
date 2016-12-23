@@ -1,9 +1,6 @@
 package com.exp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by appu on 16/12/16.
@@ -14,6 +11,11 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long sid;
     private  String sname;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MY_COURSE")
+    private Course coursetaken;
+
+
 
     public Long getSid() {
         return sid;
@@ -29,5 +31,17 @@ public class Student {
 
     public void setSname(String sname) {
         this.sname = sname;
+    }
+
+    public Course getCoursetaken() {
+        return coursetaken;
+    }
+
+    public void setCoursetaken(Course coursetaken) {
+        this.coursetaken = coursetaken;
+        if(!coursetaken.getStudents().contains(this))
+        {
+            coursetaken.getStudents().add(this);
+        }
     }
 }
